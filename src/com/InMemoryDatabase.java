@@ -13,7 +13,7 @@ public class InMemoryDatabase {
         initializeSampleData();
     }
     
-    // Singleton instance
+    
     public static synchronized InMemoryDatabase getInstance() {
         if (instance == null) {
             instance = new InMemoryDatabase();
@@ -21,7 +21,7 @@ public class InMemoryDatabase {
         return instance;
     }
     
-    // Initialize with sample data
+    //Sample data for testing  
     private void initializeSampleData() {
         try {
             addStudent(new Student(0, "Aarav Sharma", "aarav.sharma@email.com", 20, "Computer Science"));
@@ -34,7 +34,7 @@ public class InMemoryDatabase {
         }
     }
     
-    // Add student
+   
     public boolean addStudent(Student student) {
         try {
             if (student == null) {
@@ -78,7 +78,7 @@ public class InMemoryDatabase {
         }
     }
     
-    // Get student by ID
+  
     public Student getStudentById(int id) {
         try {
             return students.get(id);
@@ -141,7 +141,7 @@ public class InMemoryDatabase {
         }
     }
     
-    // Search students by name
+   
     public List<Student> searchStudentsByName(String name) {
         try {
             List<Student> result = new ArrayList<>();
@@ -160,7 +160,7 @@ public class InMemoryDatabase {
         }
     }
     
-    // Get students by course
+
     public List<Student> getStudentsByCourse(String course) {
         try {
             List<Student> result = new ArrayList<>();

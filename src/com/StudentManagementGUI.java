@@ -27,28 +27,22 @@ public class StudentManagementGUI extends JFrame {
         setSize(1000, 700);
         setLocationRelativeTo(null);
         
-        // Main panel
         JPanel mainPanel = new JPanel(new BorderLayout(10, 10));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         
-        // Header panel
         JPanel headerPanel = createHeaderPanel();
         mainPanel.add(headerPanel, BorderLayout.NORTH);
         
-        // Center panel with form and table
         JPanel centerPanel = new JPanel(new BorderLayout(10, 10));
         
-        // Form panel
         JPanel formPanel = createFormPanel();
         centerPanel.add(formPanel, BorderLayout.NORTH);
         
-        // Table panel
         JPanel tablePanel = createTablePanel();
         centerPanel.add(tablePanel, BorderLayout.CENTER);
         
         mainPanel.add(centerPanel, BorderLayout.CENTER);
         
-        // Button panel
         JPanel buttonPanel = createButtonPanel();
         mainPanel.add(buttonPanel, BorderLayout.SOUTH);
         
@@ -59,13 +53,11 @@ public class StudentManagementGUI extends JFrame {
     private JPanel createHeaderPanel() {
         JPanel panel = new JPanel(new BorderLayout());
         
-        // Title
         JLabel titleLabel = new JLabel("STUDENT MANAGEMENT SYSTEM", JLabel.CENTER);
         titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
         titleLabel.setForeground(new Color(0, 100, 0));
         panel.add(titleLabel, BorderLayout.NORTH);
         
-        // Search panel
         JPanel searchPanel = new JPanel(new FlowLayout());
         searchPanel.setBorder(BorderFactory.createTitledBorder("Search and Filter"));
         
@@ -85,14 +77,12 @@ public class StudentManagementGUI extends JFrame {
         searchPanel.add(filterComboBox);
         searchPanel.add(statsButton);
         
-        // Status label
         statusLabel = new JLabel("Ready");
         statusLabel.setBorder(BorderFactory.createLoweredBevelBorder());
         
         panel.add(searchPanel, BorderLayout.CENTER);
         panel.add(statusLabel, BorderLayout.SOUTH);
         
-        // Add action listeners
         searchButton.addActionListener(e -> searchStudents());
         filterComboBox.addActionListener(e -> filterByCourse());
         statsButton.addActionListener(e -> showStatistics());
@@ -104,14 +94,12 @@ public class StudentManagementGUI extends JFrame {
         JPanel panel = new JPanel(new GridLayout(5, 2, 5, 5));
         panel.setBorder(BorderFactory.createTitledBorder("Student Information"));
         
-        // Initialize fields
         idField = new JTextField();
         nameField = new JTextField();
         emailField = new JTextField();
         ageField = new JTextField();
         courseField = new JTextField();
         
-        // Make ID field non-editable
         idField.setEditable(false);
         idField.setBackground(Color.LIGHT_GRAY);
         
@@ -133,7 +121,6 @@ public class StudentManagementGUI extends JFrame {
         JPanel panel = new JPanel(new BorderLayout());
         panel.setBorder(BorderFactory.createTitledBorder("Students List"));
         
-        // Table model
         String[] columns = {"ID", "Name", "Email", "Age", "Course"};
         tableModel = new DefaultTableModel(columns, 0) {
             @Override
@@ -155,7 +142,6 @@ public class StudentManagementGUI extends JFrame {
             }
         });
         
-        // Style the table
         studentTable.setRowHeight(25);
         studentTable.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
         
@@ -168,14 +154,12 @@ public class StudentManagementGUI extends JFrame {
     private JPanel createButtonPanel() {
         JPanel panel = new JPanel(new FlowLayout());
         
-        // Create buttons with different colors
         addButton = createStyledButton("Add Student", new Color(0, 150, 0));
         updateButton = createStyledButton("Update Student", new Color(0, 100, 200));
         deleteButton = createStyledButton("Delete Student", new Color(200, 0, 0));
         clearButton = createStyledButton("Clear Form", new Color(150, 150, 0));
         refreshButton = createStyledButton("Refresh List", new Color(100, 100, 100));
         
-        // Add action listeners
         addButton.addActionListener(e -> addStudent());
         updateButton.addActionListener(e -> updateStudent());
         deleteButton.addActionListener(e -> deleteStudent());
@@ -208,7 +192,6 @@ public class StudentManagementGUI extends JFrame {
             String ageText = ageField.getText().trim();
             String course = courseField.getText().trim();
             
-            // Validation
             if (name.isEmpty() || email.isEmpty() || ageText.isEmpty() || course.isEmpty()) {
                 showError("Please fill all required fields!");
                 return;
@@ -256,7 +239,6 @@ public class StudentManagementGUI extends JFrame {
             String ageText = ageField.getText().trim();
             String course = courseField.getText().trim();
             
-            // Validation
             if (name.isEmpty() || email.isEmpty() || ageText.isEmpty() || course.isEmpty()) {
                 showError("Please fill all required fields!");
                 return;
@@ -452,15 +434,12 @@ public class StudentManagementGUI extends JFrame {
     }
     
     public static void main(String[] args) {
-        // Set look and feel to system default
-        // Set look and feel to system default
         try {
             UIManager.setLookAndFeel(UIManager.getLookAndFeel());
         } catch (Exception e) {
             e.printStackTrace();
         }
         
-        // Run the application
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
